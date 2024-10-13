@@ -1,0 +1,67 @@
+---
+title: "question_lab6"
+author: "Yanjie Lyu, Yi Yang"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{question_lab6}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(knapsack)
+```
+
+```{r}
+knapsack_objects <- knapsack::object(2000)
+```
+
+
+# Brute force search
+
+```{r}
+result <-system.time({
+   knapsack::brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500)
+})
+print(result)  
+```
+
+# Dynamic programming
+
+```{r}
+result <- system.time({knapsack::Dynamic(x = knapsack_objects[1:500,],W = 3500)})
+print(result)
+```
+
+# Greedy heuristic
+
+```{r}
+result <- system.time({knapsack::greedy_knapsack(x = knapsack_objects[1:1000000,],W = 3500)})
+print(result)
+```
+# Parallelize brute force search
+```{r}
+result <- system.time({knapsack::brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500,parallel=TRUE)})
+print(result)
+```
+```{r}
+result <- system.time({knapsack::brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500)})
+print(result)
+```
+```{r}
+result <- system.time({knapsack::brute_force_knapsack(x = knapsack_objects[1:10,], W = 3500,parallel=TRUE)})
+print(result)
+```
+```{r}
+result <- system.time({knapsack::brute_force_knapsack(x = knapsack_objects[1:10,], W = 3500)})
+print(result)
+```
+When n is large, such as n equals 20, parallel execution is faster. However, when 
+n is small, parallel execution offers no advantage compared to serial execution, and can sometimes be slower. This is because, with the brute force search method, each task is very small. When the total number of tasks is low, allocating cores and the communication between cores can increase the response time.
