@@ -4,7 +4,7 @@
 \alias{brute_force_knapsack}
 \title{Title}
 \usage{
-brute_force_knapsack(x, W)
+brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
 \item{x}{}
