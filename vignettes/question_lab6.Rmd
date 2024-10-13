@@ -64,4 +64,6 @@ result <- system.time({knapsack::brute_force_knapsack(x = knapsack_objects[1:10,
 print(result)
 ```
 When n is large, such as n equals 20, parallel execution is faster. However, when 
-n is small, parallel execution offers no advantage compared to serial execution, and can sometimes be slower. This is because, with the brute force search method, each task is very small. When the total number of tasks is low, allocating cores and the communication between cores can increase the response time.
+n is small, parallel execution offers no advantage compared to serial execution, and can sometimes be slower. 
+This is because, with the brute force search method, each task is very small. When the total number of tasks is low, 
+allocating cores and the communication between cores can increase the response time.
