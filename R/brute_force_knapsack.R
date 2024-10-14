@@ -2,6 +2,7 @@
 #'
 #' @param x 
 #' @param W 
+#' @param parallel 
 #' @import future.apply
 #' @import future
 #'
