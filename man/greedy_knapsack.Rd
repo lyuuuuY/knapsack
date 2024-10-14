@@ -7,9 +7,9 @@
 greedy_knapsack(x, W)
 }
 \arguments{
-\item{x}{}
+\item{x}{data.frame cx with two variables v and w}
 
-\item{W}{}
+\item{W}{Weight}
 }
 \value{
 final

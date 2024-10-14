@@ -7,11 +7,11 @@
 brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
-\item{x}{}
+\item{x}{data.frame cx with two variables v and w}
 
-\item{W}{}
+\item{W}{Weight}
 
-\item{parallel}{}
+\item{parallel}{default false}
 }
 \value{
 final

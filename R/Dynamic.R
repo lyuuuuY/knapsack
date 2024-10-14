@@ -1,7 +1,7 @@
 #' Title
 #'
-#' @param x 
-#' @param W 
+#' @param x data.frame cx with two variables v and w
+#' @param W Weight
 #'
 #' @return final
 #' @export

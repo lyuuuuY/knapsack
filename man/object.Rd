@@ -7,7 +7,7 @@
 object(n)
 }
 \arguments{
-\item{n}{}
+\item{n}{number of objects}
 }
 \value{
 knapsack_objects
