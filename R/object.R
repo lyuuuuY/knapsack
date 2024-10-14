@@ -1,6 +1,8 @@
 #' Title
 #'
-#' @param n 
+#' @param n number of objects
+#' 
+#' @importFrom stats runif
 #'
 #' @return knapsack_objects
 #' @export
