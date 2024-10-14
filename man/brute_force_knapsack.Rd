@@ -10,6 +10,8 @@ brute_force_knapsack(x, W, parallel = FALSE)
 \item{x}{}
 
 \item{W}{}
+
+\item{parallel}{}
 }
 \value{
 final

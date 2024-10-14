@@ -33,12 +33,14 @@ function(x,W){
     
   }  
   m <- nrow(new_x) 
+  col_dp <- W+1
   while (m>0) {
-    b <- min(which(dp == max(dp[1:m,2000]), arr.ind = TRUE)[, "row"])
+    b <- min(which(dp == max(dp[1:m,col_dp]), arr.ind = TRUE)[, "row"])
     if((b-1)>0){
       elements <- c(elements,b-1)
     }
     m <- b-1
+    col_dp <- col_dp-x[b-1,1]
   }  #有点难解释，可以运行一下看看输出的dp矩阵是什么样子，倒推求elements
   final <- list(
     value = as.integer(max(dp)),
