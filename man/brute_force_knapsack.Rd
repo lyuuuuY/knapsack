@@ -2,20 +2,23 @@
 % Please edit documentation in R/brute_force_knapsack.R
 \name{brute_force_knapsack}
 \alias{brute_force_knapsack}
-\title{Title}
+\title{Brute Force Search}
 \usage{
 brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
-\item{x}{}
+\item{x}{data.frame where each row represents an item with its weight and value.}
 
-\item{W}{}
+\item{W}{A numeric value representing maximum capacity of knapsack.}
 
-\item{parallel}{}
+\item{parallel}{A logical value indicating whether to use parallel processing. 
+Default is FALSE}
 }
 \value{
-final
+final A list shows the maximum knapsack value and the elements.
 }
 \description{
-Title
+This function executes brute force search by default to solve knapsack problem,
+ and used `future` and `future.apply` package to  operate in parallel mode to 
+ speed up the computation.
 }

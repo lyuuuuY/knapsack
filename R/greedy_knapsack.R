@@ -1,11 +1,22 @@
-#' Title
+#' Greedy Algorithm
 #'
-#' @param x 
-#' @param W 
+#'  This function uses greedy algorithm to solve knapsack problem by calculating 
+#'  the unit weight value of each item and sort the items according to this value 
+#'  to choose the item with high value.
+#'  
+#' @param x data.frame where each row represents an item with its weight and 
+#'   value.
+#' @param W A numeric value representing maximum capacity of knapsack.
 #'
-#' @return final
+#' @return final  A list shows the maximum knapsack value and the elements.
+#' 
 #' @export
-#'
+#' 
+#' @examples
+#' items <- data.frame(weight = c(2, 3, 4), value = c(3, 4, 5))
+#' W <- 5
+#' greedy_knapsack(items, W)
+#' 
 greedy_knapsack <-
 function(x,W){
   if(is.data.frame(x)==FALSE){

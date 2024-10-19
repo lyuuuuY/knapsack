@@ -11,13 +11,14 @@ Author: c(
     person('Yi','Yang',role='aut')       
     )
 Maintainer: Yanjie Lyu <yanly639@student.liu.se>
-Description: Using brute force search, dynamic programming and greedy heuristic to solve knapsack problem.
+Description: This package provides solutions to the knapsack problem using three methods: brute force search, dynamic programming, and greedy algorithms. It also includes performance analysis to enhance the execution speed of each algorithm.
 Encoding: UTF-8
 License: GPL-3
 RoxygenNote: 7.3.2.9000
 Imports:
      future.apply,
-    future
+    future,
+    profvis
 Suggests: 
     knitr,
     rmarkdown,

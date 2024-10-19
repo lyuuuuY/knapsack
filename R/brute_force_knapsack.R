@@ -1,14 +1,23 @@
-#' Title
+#' Brute Force Search
 #'
-#' @param x 
-#' @param W 
-#' @param parallel 
+#'  This function executes brute force search by default to solve knapsack problem,
+#'  and used `future` and `future.apply` package to  operate in parallel mode to 
+#'  speed up the computation.
+#'
+#' @param x data.frame where each row represents an item with its weight and value.
+#' @param W A numeric value representing maximum capacity of knapsack.
+#' @param parallel A logical value indicating whether to use parallel processing. 
+#'   Default is FALSE
+#'   
 #' @import future.apply
 #' @import future
-#'
-#' @return final
+#' 
+#' @return final A list shows the maximum knapsack value and the elements.
+#' 
 #' @export
-#'
+#' 
+#' 
+#'   
 brute_force_knapsack <-
 function(x,W,parallel=FALSE){
   if(is.data.frame(x)==FALSE){
@@ -54,16 +63,16 @@ function(x,W,parallel=FALSE){
       }
     }
     
-    return(list(value = final_v, elements = final_elements))
+    return(list(value = round(final_v), elements = final_elements))
   }     
   else{
     bits <- list()
     for (i in 0:(2^item - 1)) {
       bits_0 <- as.integer(head(intToBits(i), item))
       bits[[i + 1]] <- bits_0
-    }   #将2^n种组合以二进制方式表示
-    bits_mt <- do.call(rbind, bits) #变成矩阵
-    final_v <- 0 #初始化value
+    }   
+    bits_mt <- do.call(rbind, bits) 
+    final_v <- 0 
     
     for (j in 1:nrow(bits_mt)) {
       temp_w <- as.numeric(bits_mt[j,]%*%x[,1])  
@@ -73,11 +82,12 @@ function(x,W,parallel=FALSE){
         final_v <- temp_v
         elements <- which(bits_mt[j,]==1) 
       }
-    }       #计算每种组合的W和V，比较取最优
+    }       
     final <- list(
-      value = final_v,
+      value = round(final_v),
       elements = elements
     )
     return(final)
   }
 }
+
