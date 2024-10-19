@@ -1,4 +1,4 @@
-#' Title
+#' Dynamic 
 #'
 #' @param x data.frame cx with two variables v and w
 #' @param W Weight
@@ -23,8 +23,8 @@ function(x,W){
   # j循环：以1——W为单位，遍历循环判断能不能装入当前重量的背包里
   for (i in 2:nrow(dp)) {
     for (j in 2:ncol(dp)) {
-      if(new_x[i,1]<=j){
-        dp[i,j] <- max(dp[i-1,j], dp[i - 1, j - new_x[i, 1]] + new_x[i, 2])
+      if(new_x[i,1]<=j){                                                    #bottleneck1
+        dp[i,j] <- max(dp[i-1,j], dp[i - 1, j - new_x[i, 1]] + new_x[i, 2]) #bottleneck2
       }
       else{
         dp[i,j] <- dp[i-1,j]
@@ -35,7 +35,7 @@ function(x,W){
   m <- nrow(new_x) 
   col_dp <- W+1
   while (m>0) {
-    b <- min(which(dp == max(dp[1:m,col_dp]), arr.ind = TRUE)[, "row"])
+    b <- min(which(dp == max(dp[1:m,col_dp]), arr.ind = TRUE)[, "row"])    #bottleneck3
     if((b-1)>0){
       elements <- c(elements,b-1)
     }
@@ -43,8 +43,13 @@ function(x,W){
     col_dp <- col_dp-x[b-1,1]
   }  #有点难解释，可以运行一下看看输出的dp矩阵是什么样子，倒推求elements
   final <- list(
-    value = as.integer(max(dp)),
+    value = round(max(dp)),
     elements = elements
   )
   return(final)
 }
+
+
+
+
+

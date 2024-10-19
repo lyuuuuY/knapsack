@@ -1,11 +1,17 @@
 Package: knapsack
 Type: Package
-Title: What the Package Does (Short Line)
+Title: Using different methods to solve knapsack problem
 Version: 1.0
 Date: 2024-10-12
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line).
+Author: c(
+    person(given="Yanjie",
+           family="Lyu",
+           role=c("aut","cre"),
+           email="yanly639@student.liu.se"),
+    person('Yi','Yang',role='aut')       
+    )
+Maintainer: Yanjie Lyu <yanly639@student.liu.se>
+Description: Using brute force search, dynamic programming and greedy heuristic to solve knapsack problem.
 Encoding: UTF-8
 License: GPL-3
 RoxygenNote: 7.3.2.9000
