@@ -11,7 +11,9 @@
 #'   
 #' @import future.apply
 #' @import future
-#' 
+#' @importFrom utils head
+#' @importFrom stats runif
+#'
 #' @return final A list shows the maximum knapsack value and the elements.
 #' 
 #' @export
