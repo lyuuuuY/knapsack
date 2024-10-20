@@ -29,7 +29,7 @@ function(x,W,parallel=FALSE){
     stop()
   }
   
-  plan(multisession, workers = 8)  
+  plan(multisession, workers = 2)  
   options(future.globals.maxSize = 1024 * 1024 * 1024)  # 1GB
   
   item <- nrow(x) #获取物品数量

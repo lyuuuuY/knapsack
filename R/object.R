@@ -2,6 +2,8 @@
 #'
 #'  This function generates a data frame of knapsack objects with random weights
 #'  and values.
+#' 
+#' @importFrom stats runif
 #'
 #' @param n An integer specifying the number of objects to generate.
 #'

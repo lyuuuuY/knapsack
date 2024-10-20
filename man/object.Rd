@@ -7,7 +7,9 @@
 object(n)
 }
 \arguments{
+
 \item{n}{An integer specifying the number of objects to generate.}
+
 }
 \value{
 knapsack_objects A data frame containing the generated knapsack 
