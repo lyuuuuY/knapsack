@@ -16,12 +16,12 @@ Encoding: UTF-8
 License: GPL-3
 RoxygenNote: 7.3.2.9000
 Imports:
-     future.apply,
-    future,
-    profvis
+    future.apply,
+    future
 Suggests: 
     knitr,
     rmarkdown,
+    profvis,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
