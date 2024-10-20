@@ -1,0 +1,99 @@
+---
+title: "Profile_and_optimize"
+author: "Yanjie Lyu, Yi Yang"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Profile_and_optimize}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+## Introduction
+This vignette shows the time changes between before and after optimization. We used `profvis` package to find the bottlenecks and optimized them.
+
+```{r setup}
+library(knapsack)
+library(profvis)
+library(future)
+library(future.apply)
+x=object(2000)
+```
+
+## Brute force
+This function executes brute force search by default, we used `profvis` package and `system.time` function to profile this function.
+In this example, it took 1.02s in total to run the function.
+
+```{r brute_force_search}
+
+result <-system.time({
+   brute_force_knapsack(x [1:16,], W = 3500)
+})
+print(result) 
+```
+
+Using `profvis` package to identify bottlenecks, we found that  bottleneck occurs during the processing of binary combination generation and forming the matrix for calculating knapsack combinations.
+
+```{r brute_force_search_profiling}
+profvis({result <-
+   brute_force_knapsack(x [1:16,], W = 3500)})
+```
+
+Then we tried to optimize the code, and used `future` and `future.apply` package.By doing this, time decreased to 0.78s .
+
+```{r optimized_brute_force_search}
+library(future)
+library(future.apply)
+result <-system.time({
+   brute_force_knapsack(x [1:16,], W = 3500,parallel = TRUE)
+})
+print(result) 
+```
+
+## Dynamic programming
+This function uses a two-dimensional method to solve the knapsack problem by iteratively computing the optimal value for each item and capacity,ensuring the maximum total value without exceeding the weight limit.
+In this example, it took 14.08s in total to run the function.
+
+```{r dynamic_programming}
+result <- system.time({Dynamic(x [1:500,],W = 3500)})
+print(result)
+```
+
+Using `profvis` package to identify bottlenecks, we found that it can still be optimized in terms of space usage, as the full 2D method consumes significant memory, especially when dealing with large inputs.
+
+```{r dynamic_programming_profiling}
+profvis({result <-
+   Dynamic(x [1:500,],W = 3500)})
+```
+
+Then we converted the two-dimensional method into  one-dimensional method and recorded the selected items during the process of updating the one-dimensional matrix. In the same example, the time was significantly reduced,it took 0.07s to run the function.
+
+```{r optimized_dynamic_programming}
+result <- system.time({Dynamic_optimized_v1(x [1:500,],W = 3500)})
+print(result)
+```
+
+## Greedy
+This function uses greedy algorithm to solve knapsack problem by calculating the unit weight value of each item and sort the items according to this value to choose the item with high value.
+In this example, it took 6.53s in total to run the function.
+
+```{r greedy}
+result <- system.time({greedy_knapsack(x [1:10000000,],W = 3500)})
+print(result)
+```
+
+Using the `profvis` package to identify bottlenecks, we found that creating the new matrix may consume more memory.
+
+```{r greedy_profiling}
+profvis({result <-
+   greedy_knapsack(x [1:10000000,],W = 3500)})
+```
+
+Then we optimized the code by adding a new column directly to the original data frame `x` and sorting based on this column,which reduced the memory usage. It took 4.39s to run the function.
+
+```{r optimized_greedy}
+result <- system.time({greedy_knapsack_v2(x [1:10000000,],W = 3500)})
+print(result)
+```
+
+## Conclusion
+In this vignette, we demonstrated three approaches to solving the knapsack problem, highlighting the improvements achieved through profiling and optimization techniques.
+

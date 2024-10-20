@@ -1,10 +1,15 @@
-#' Title
+#' Generate Knapsack Objects
 #'
-#' @param n number of objects
+#'  This function generates a data frame of knapsack objects with random weights
+#'  and values.
 #' 
 #' @importFrom stats runif
 #'
-#' @return knapsack_objects
+#' @param n An integer specifying the number of objects to generate.
+#'
+#' @return knapsack_objects A data frame containing the generated knapsack 
+#'   objects with columns for weight (`w`) and value (`v`).
+#'   
 #' @export
 #'
 object <-
@@ -18,3 +23,4 @@ function(n){
     )
   invisible(knapsack_objects)
 }
+

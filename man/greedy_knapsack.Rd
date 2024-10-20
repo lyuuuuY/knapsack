@@ -2,18 +2,29 @@
 % Please edit documentation in R/greedy_knapsack.R
 \name{greedy_knapsack}
 \alias{greedy_knapsack}
-\title{Title}
+\title{Greedy Algorithm}
 \usage{
 greedy_knapsack(x, W)
 }
 \arguments{
-\item{x}{data.frame cx with two variables v and w}
 
-\item{W}{Weight}
+\item{x}{data.frame where each row represents an item with its weight and 
+value.}
+
+\item{W}{A numeric value representing maximum capacity of knapsack.}
+
 }
 \value{
-final
+final  A list shows the maximum knapsack value and the elements.
 }
 \description{
-Title
+This function uses greedy algorithm to solve knapsack problem by calculating 
+ the unit weight value of each item and sort the items according to this value 
+ to choose the item with high value.
+}
+\examples{
+items <- data.frame(weight = c(2, 3, 4), value = c(3, 4, 5))
+W <- 5
+greedy_knapsack(items, W)
+
 }

@@ -2,16 +2,20 @@
 % Please edit documentation in R/object.R
 \name{object}
 \alias{object}
-\title{Title}
+\title{Generate Knapsack Objects}
 \usage{
 object(n)
 }
 \arguments{
-\item{n}{number of objects}
+
+\item{n}{An integer specifying the number of objects to generate.}
+
 }
 \value{
-knapsack_objects
+knapsack_objects A data frame containing the generated knapsack 
+  objects with columns for weight (`w`) and value (`v`).
 }
 \description{
-Title
+This function generates a data frame of knapsack objects with random weights
+ and values.
 }
